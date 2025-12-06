@@ -1,4 +1,4 @@
-const API = "http://127.0.0.1:8000/tasks";
+const API = "https://daytasks.onrender.com";
 
 // Load tasks on page load
 window.onload = loadTasks;
