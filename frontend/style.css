@@ -1,0 +1,52 @@
+body {
+  background: #121212;
+  color: white;
+  font-family: Arial;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 500px;
+  margin-top: 40px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.task-input input {
+  padding: 10px;
+  width: 40%;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.task-input button {
+  padding: 10px 20px;
+  background: #03a9f4;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.task {
+  background: #1e1e1e;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+.task span {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.task button {
+  margin-right: 5px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
