@@ -24,7 +24,7 @@ def convert_objectid_to_str(data: dict) -> dict:
     return data
 
 
-@router.post("/", response_model=TaskResponse, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=TaskResponse, status_code=status.HTTP_201_CREATED)
 async def create_task(task: TaskCreate):
     """
     Create a new task.
@@ -49,7 +49,7 @@ async def create_task(task: TaskCreate):
     return TaskResponse(**convert_objectid_to_str(created_task))
 
 
-@router.get("/", response_model=List[TaskResponse])
+@router.get("", response_model=List[TaskResponse])
 async def get_all_tasks():
     """
     List all tasks.
@@ -86,7 +86,7 @@ async def update_task(task_id: str, data: dict):
 
     await db.tasks.update_one({"_id": object_id}, {"$set": update_fields})
     updated_task = await db.tasks.find_one({"_id": object_id})
-    
+
     return TaskResponse(**convert_objectid_to_str(updated_task))
 
 
