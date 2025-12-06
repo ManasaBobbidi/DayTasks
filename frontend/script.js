@@ -1,10 +1,9 @@
 const API = "https://daytasks.onrender.com/tasks";
 
-// Load tasks on page load
 window.onload = loadTasks;
 
 async function loadTasks() {
-  const res = await fetch(API);
+  const res = await fetch(`${API}/`);
   const tasks = await res.json();
 
   const list = document.getElementById("task-list");
@@ -24,28 +23,23 @@ async function loadTasks() {
 
 async function addTask() {
   const title = document.getElementById("title").value;
-
-  await fetch(API, {
+  await fetch(`${API}/`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({ title })
   });
-
   document.getElementById("title").value = "";
   loadTasks();
 }
 
 async function markDone(id) {
   await fetch(`${API}/${id}`, {
-    method: "PUT",
-    headers: {"Content-Type": "application/json"},
+    method: "PUT"
   });
   loadTasks();
 }
 
 async function deleteTask(id) {
-  await fetch(`${API}/${id}`, {
-    method: "DELETE"
-  });
+  await fetch(`${API}/${id}`, { method: "DELETE" });
   loadTasks();
 }
