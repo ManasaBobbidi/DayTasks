@@ -15,7 +15,9 @@ async function loadTasks() {
       <div class="task">
         <span><b>${task.title}</b></span>
         <span>Status: ${task.completed ? "✔ Completed" : "❌ Pending"}</span>
-        <button onclick="markDone('${task.id}')">Done</button>
+        <button onclick="markDone('${task.id}', ${task.completed})">
+          ${task.completed ? "Undo" : "Done"}
+        </button>
         <button onclick="deleteTask('${task.id}')">Delete</button>
       </div>
     `;
@@ -37,14 +39,20 @@ async function addTask() {
   loadTasks();
 }
 
-// Mark Done
-async function markDone(id) {
-  await fetch(`${API}/${id}`, { method: "PUT" });
+// Mark Done (toggle completed)
+async function markDone(id, currentStatus) {
+  await fetch(`${API}/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ completed: !currentStatus })
+  });
   loadTasks();
 }
 
 // Delete task
 async function deleteTask(id) {
-  await fetch(`${API}/${id}`, { method: "DELETE" });
+  await fetch(`${API}/${id}`, {
+    method: "DELETE"
+  });
   loadTasks();
 }
