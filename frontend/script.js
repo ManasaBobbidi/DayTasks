@@ -1,4 +1,4 @@
-const API = "https://daytasks.onrender.com/tasks/";
+const API = "https://daytasks.onrender.com";
 
 window.onload = loadTasks;
 
