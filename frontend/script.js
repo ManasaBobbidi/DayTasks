@@ -1,10 +1,10 @@
-const API = "https://daytasks.onrender.com";
+const API = "https://daytasks.onrender.com/tasks";
 
 window.onload = loadTasks;
 
 // Load tasks
 async function loadTasks() {
-  const res = await fetch(API + "/");
+  const res = await fetch(API);
   const tasks = await res.json();
 
   const list = document.getElementById("task-list");
@@ -27,7 +27,7 @@ async function addTask() {
   const title = document.getElementById("title").value.trim();
   if (!title) return alert("Enter a task!");
 
-  await fetch(API + "/", {
+  await fetch(API, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({ title })
