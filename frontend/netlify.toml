@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/tasks/*"
+  to = "https://daytasks.onrender.com/tasks/:splat"
+  status = 200
+  force = true
